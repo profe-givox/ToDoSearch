@@ -19,20 +19,26 @@ public final class CLIArguments {
 
     @Parameter(required = true,
     descriptionKey = "Critererio",
+    validateWith = CLICriterioValidator.class,
     description = "Criterio de busqueda")
     private String criterio;
 
     @Parameter(
-            names = {"--realizadas", "-r"},
-            description = "Agrer esta bandera si solo se quiere tareas realizadas"
+            names = {"--realizada", "-r"},
+            description = "Agregar esta bandera si solo se quiere tareas realizadas"
     )
     private boolean realizada;
 
     @Parameter(
             names = {"--help","-h"},
             help = true,
+            validateWith = CLIAyudaValidator.class,
             description = "Muestra esta ayuda")
-        private boolean help;
+    private boolean help;
+
+    public boolean isHelp() {
+        return help;
+    }
 
     private CLIArguments() {
     }
